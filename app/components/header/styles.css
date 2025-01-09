@@ -1,0 +1,15 @@
+#stream {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 5px;
+}
+
+#stream::before {
+    content: " ";
+    background: red;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    animation: 2s ease-in-out 0s infinite normal none running pulse;
+}

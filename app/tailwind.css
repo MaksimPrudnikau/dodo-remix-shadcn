@@ -19,7 +19,7 @@ body {
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 24.71, 100%, 50%; /* orange */
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -73,5 +73,13 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  a {
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    @apply text-primary
   }
 }
