@@ -36,7 +36,7 @@ export function HeaderNav() {
         <li>
           <DropdownMenu open={menuOpened} onOpenChange={setOpened}>
             <DropdownMenuTrigger
-              className={"flex px-3 py-2 bg-zinc-300 rounded-full place-center"}
+              className={"flex px-3 py-2 bg-zinc-200 rounded-full place-center"}
             >
               <div>Еще</div>
               <div className={"mt-0.5"}>
