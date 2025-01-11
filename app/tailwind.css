@@ -38,6 +38,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --disabled: 240, 5%, 65%; /* zinc-400 (gray) */
+    --yellow: rgb(255, 210, 0);
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -70,6 +72,7 @@ body {
 @layer base {
   * {
     @apply border-border;
+    @apply text-[14px];
   }
   body {
     @apply bg-background text-foreground;
@@ -80,6 +83,28 @@ body {
   }
 
   a:hover {
-    @apply text-primary
+    @apply text-primary;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+}
+
+@layer components {
+  .place-center {
+    @apply flex items-center justify-center;
   }
 }

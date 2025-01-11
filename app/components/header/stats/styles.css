@@ -1,0 +1,17 @@
+#header-stats {
+  width: 31rem;
+
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .row > *:first-child {
+    width: 50%;
+  }
+
+  .row > *:nth-child(2) {
+    width: 50%;
+  }
+}

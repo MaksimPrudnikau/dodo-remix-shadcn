@@ -1,5 +1,5 @@
 import HeaderBar from "~/components/header/HeaderBar";
-import { HeaderStats } from "~/components/header/HeaderStats";
+import { HeaderStats } from "~/components/header/stats/HeaderStats";
 
 export default function Header() {
   return (

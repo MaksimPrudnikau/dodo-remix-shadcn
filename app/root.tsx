@@ -8,10 +8,15 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 
 import styles from "./tailwind.css?url";
+import ratingStyles from "@smastrom/react-rating/style.css?url";
 import Header from "~/components/header/Header";
+import { ReactNode } from "react";
 
-export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
-export function Layout({ children }: { children: React.ReactNode }) {
+export const links: LinksFunction = () => [
+  { rel: "stylesheet", href: styles },
+  { rel: "stylesheet", href: ratingStyles },
+];
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
