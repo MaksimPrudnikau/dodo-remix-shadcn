@@ -9,6 +9,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { useRef, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Anchor } from "~/components/ui/anchor";
 
 export function HeaderNav() {
   const [menuOpened, setOpened] = useState(false);
@@ -16,22 +17,22 @@ export function HeaderNav() {
     <nav>
       <ul className={"place-center gap-5 justify-start"}>
         <li>
-          <Link to={"#new"}>Новинки</Link>
+          <Anchor to={"#new"}>Новинки</Anchor>
         </li>
         <li>
-          <Link to={"#tasty"}>Сытные пиццы</Link>
+          <Anchor to={"#tasty"}>Сытные пиццы</Anchor>
         </li>
         <li>
-          <Link to={"#pizzas"}>Пиццы</Link>
+          <Anchor to={"#pizzas"}>Пиццы</Anchor>
         </li>
         <li>
-          <Link to={"#combo"}>Комбо</Link>
+          <Anchor to={"#combo"}>Комбо</Anchor>
         </li>
         <li>
-          <Link to={"#snacks"}>Закуски</Link>
+          <Anchor to={"#snacks"}>Закуски</Anchor>
         </li>
         <li>
-          <Link to={"#breakfasts"}>Завтраки</Link>
+          <Anchor to={"#breakfasts"}>Завтраки</Anchor>
         </li>
         <li>
           <DropdownMenu open={menuOpened} onOpenChange={setOpened}>
@@ -49,36 +50,50 @@ export function HeaderNav() {
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuGroup>
-                <MenuItem to="#coctails" label="Коктейли" />
-                <MenuItem to="#coffee" label="Кофе" />
-                <MenuItem to="#drinks" label="Напитки" />
-                <MenuItem to="#desserts" label="Десерты" />
-                <MenuItem to="#souses" label="Соусы" />
-                <MenuItem to="#misc" label="Другие товары" />
-                <MenuItem to="#hits" label="Хиты" />
-                <MenuItem to="#party" label="На компанию" />
-                <MenuItem to="#kids" label="Детям" />
+                {menuItems.map((item) => {
+                  return (
+                    <MenuItem key={item.to} to={item.to} label={item.label} />
+                  );
+                })}
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </li>
         <li className={"bg-black w-[3px] h-[3px] rounded-full"}></li>
         <li>
-          <Link to={"#prom"}>Акции</Link>
+          <Anchor to={"#prom"}>Акции</Anchor>
         </li>
       </ul>
     </nav>
   );
 }
 
+const menuItems = [
+  { to: "#coctails", label: "Коктейли" },
+  { to: "#coffee", label: "Кофе" },
+  { to: "#drinks", label: "Напитки" },
+  { to: "#desserts", label: "Десерты" },
+  { to: "#souses", label: "Соусы" },
+  { to: "#misc", label: "Другие товары" },
+  { to: "#hits", label: "Хиты" },
+  { to: "#party", label: "На компанию" },
+  { to: "#kids", label: "Детям" },
+];
+
 const MenuItem = ({ to, label }: { to: string; label: string }) => {
   const ref = useRef<HTMLAnchorElement>(null);
+  const click = () => {
+    const section = document.getElementById(to);
+    section?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <DropdownMenuItem
-      className={"dropdown-item hover:cursor-pointer hover:text-primary"}
-      onClick={() => ref.current?.click()}
+      className={"dropdown-item hover:cursor-pointer focus:text-primary"}
+      onClick={() => {
+        ref.current?.click();
+      }}
     >
-      <Link ref={ref} to={to}>
+      <Link ref={ref} to={to} onClick={click}>
         {label}
       </Link>
     </DropdownMenuItem>
