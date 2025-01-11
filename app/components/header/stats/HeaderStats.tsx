@@ -11,20 +11,20 @@ export function HeaderStats() {
   return (
     <div className={"flex flex-col gap-1"}>
       <div className={"flex gap-1"}>
-        <h4>Доставка пиццы:</h4>
-        <h4>Минск</h4>
+        <h3>Доставка пиццы:</h3>
+        <h3>Минск</h3>
       </div>
       <TooltipProvider delayDuration={100}>
         <Tooltip>
           <TooltipTrigger asChild>
             <div
               className={
-                "flex gap-1 items-center justify-start cursor-pointer w-fit"
+                "flex gap-2 items-center justify-start cursor-pointer w-fit"
               }
             >
-              <span>37 мин</span>
-              <span className={"w-[3px] h-[3px] bg-black"}></span>
-              <span>4.76</span>
+              <h3>37 мин</h3>
+              <h3 className={"w-[6px] h-[6px] bg-black rounded-full"}> </h3>
+              <h3>4.76</h3>
             </div>
           </TooltipTrigger>
           <TooltipContent id={"header-stats"} side={"bottom"}>
