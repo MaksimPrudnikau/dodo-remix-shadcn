@@ -13,3 +13,9 @@
     border-radius: 50%;
     animation: 2s ease-in-out 0s infinite normal none running pulse;
 }
+
+@keyframes pulse {
+    50% {
+        opacity: 50%;
+    }
+}
