@@ -1,0 +1,10 @@
+nav {
+  li {
+    cursor: pointer;
+    transition: 0.3s color;
+  }
+
+  li:hover {
+    color: hsl(var(--primary));
+  }
+}
