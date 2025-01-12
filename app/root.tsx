@@ -11,6 +11,7 @@ import styles from "./tailwind.css?url";
 import ratingStyles from "@smastrom/react-rating/style.css?url";
 import Header from "~/components/header/Header";
 import { ReactNode } from "react";
+import { Toaster } from "~/components/ui/toaster";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: styles },
@@ -30,6 +31,7 @@ export function Layout({ children }: { children: ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Toaster />
       </body>
     </html>
   );
