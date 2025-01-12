@@ -19,7 +19,7 @@ body {
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 24.71, 100%, 50%; /* orange */
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
@@ -38,6 +38,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --disabled: 240, 5%, 65%; /* zinc-400 (gray) */
+    --yellow: rgb(255, 210, 0);
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -70,8 +72,39 @@ body {
 @layer base {
   * {
     @apply border-border;
+    @apply text-[14px];
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  a {
+    transition: color 0.2s;
+  }
+
+  a:hover {
+    @apply text-primary;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+}
+
+@layer components {
+  .place-center {
+    @apply flex items-center justify-center;
   }
 }
