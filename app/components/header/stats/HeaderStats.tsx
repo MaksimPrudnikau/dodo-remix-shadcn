@@ -9,7 +9,7 @@ import { StarRating } from "~/components/ui/StarRating";
 
 export function HeaderStats() {
   return (
-    <div className={"flex flex-col gap-1"}>
+    <div className={"flex flex-col gap-2"}>
       <div className={"flex gap-1"}>
         <h3>Доставка пиццы:</h3>
         <h3>Минск</h3>
@@ -24,10 +24,19 @@ export function HeaderStats() {
             >
               <h3>37 мин</h3>
               <h3 className={"w-[6px] h-[6px] bg-black rounded-full"}> </h3>
-              <h3>4.76</h3>
+              <div className={"place-center gap-1"}>
+                <h3>4.76</h3>
+                <div className={"w-6 pb-0.5"}>
+                  <StarRating value={1} items={1} readOnly />
+                </div>
+              </div>
             </div>
           </TooltipTrigger>
-          <TooltipContent id={"header-stats"} side={"bottom"}>
+          <TooltipContent
+            className={"rounded-2xl"}
+            id={"header-stats"}
+            side={"bottom"}
+          >
             <div className={"flex flex-col gap-10 px-1 py-3"}>
               <div className={"flex flex-col gap-2"}>
                 <h2>Время и стоимость доставки могут меняться</h2>
