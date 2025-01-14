@@ -1,7 +1,8 @@
-import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/node";
 import { Button } from "~/components/ui/button";
 import { useLoaderData, useNavigation } from "@remix-run/react";
-import { createSupabase } from "~/lib/supabase.server";
+import { db } from "~/lib/kysely.server";
+import _ from "lodash";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,7 +15,6 @@ export default function Index() {
   // const { data, isLoading } = useLoader(loader);
   const data = useLoaderData<typeof loader>();
   const isLoading = useNavigation().state === "loading";
-  console.log(data);
 
   return (
     <div>
@@ -24,11 +24,27 @@ export default function Index() {
   );
 }
 
-export async function loader(args: LoaderFunctionArgs) {
-  const { supabase, headers } = await createSupabase(args);
+export async function loader() {
+  const products = await db
+    .selectFrom("products")
+    .innerJoin(
+      "products_by_section",
+      "products_by_section.product",
+      "products.id",
+    )
+    .innerJoin(
+      "product_sections",
+      "product_sections.id",
+      "products_by_section.section",
+    )
+    .select([
+      "products.id as id",
+      "products.name as name",
+      "products.pic",
+      "product_sections.id as sectionId",
+      "product_sections.name as sectionName",
+    ])
+    .execute();
 
-  const { data: products, error } = await supabase
-    .from("products_by_section")
-    .select("product, section, products(id, name)");
-  return products;
+  return _.groupBy(products, (p) => p.sectionId);
 }
